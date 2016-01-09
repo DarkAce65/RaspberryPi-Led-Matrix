@@ -10,7 +10,7 @@ ledMatrix = RGBMatrix(rows, chains, parallel)
 height = ledMatrix.height
 width = ledMatrix.width
 for i in range(100):
-	ledMatrix.setPixel(randint(0, width), randint(0, height), randint(0, 255), randint(0, 255), randint(0, 255))
+	ledMatrix.SetPixel(randint(0, width), randint(0, height), randint(0, 255), randint(0, 255), randint(0, 255))
 	time.sleep(0.05)
 time.sleep(5)
 ledMatrix.Clear()
