@@ -13,4 +13,4 @@ nextFrame = ledMatrix.CreateFrameCanvas()
 
 while True:
 	nextFrame.SetPixel(randint(0, width), randint(0, height), randint(0, 255), randint(0, 255), randint(0, 255))
-	nextFrame = ledMatrix.swapOnVSync(nextFrame)
+	nextFrame = ledMatrix.SwapOnVSync(nextFrame)
