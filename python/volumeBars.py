@@ -12,14 +12,16 @@ ledMatrix = RGBMatrix(rows, chains, parallel)
 
 height = ledMatrix.height
 width = ledMatrix.width
-barWidth = width / 4
+barWidth = width / 16
 pi = numpy.pi
-barHeights = numpy.array([0, pi / 4, pi / 2, pi * 3 / 4])
+barHeights = numpy.array([])
+for i in range(16):
+	barHeights[i] = i * pi / 16
 
 while True:
 	nextFrame = ledMatrix.CreateFrameCanvas()
 	heights = numpy.sin(barHeights)
-	barHeights += pi / 4
+	barHeights += pi / 16
 	for x in range(width):
 		barHeight = int(heights[int(x / barWidth)] * height)
 		for y in range(height):
