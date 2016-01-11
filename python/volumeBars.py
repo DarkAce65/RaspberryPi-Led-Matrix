@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from rgbmatrix import RGBMatrix
 from random import randint
+import numpy
 import math
 import time
 
@@ -12,16 +13,17 @@ ledMatrix = RGBMatrix(rows, chains, parallel)
 height = ledMatrix.height
 width = ledMatrix.width
 barWidth = width / 4
-barHeights = [0, 45, 90, 135]
+pi = numpy.pi
+barHeights = numpy.array([0, pi / 4, pi / 2, pi * 3 / 4])
 
 while True:
 	nextFrame = ledMatrix.CreateFrameCanvas()
-	heights = numpy.sin(barHeights * numpy.pi / 180)
-	numpy.add(45, barHeights)
+	heights = numpy.sin(barHeights)
+	barHeights += pi / 4
 	for x in range(width):
-		for y in range(height):
-			height = int(heights[int(x / barWidth)] * height)
-			if y < height
+		barHeight = int(heights[int(x / barWidth)] * height)
+		for y in range(height):	
+			if height - y <= barHeight:
 				nextFrame.SetPixel(x, y, randint(0, 255), randint(0, 255), randint(0, 255))
 	ledMatrix.SwapOnVSync(nextFrame)
-	time.sleep(1)
+	time.sleep(0.2)
