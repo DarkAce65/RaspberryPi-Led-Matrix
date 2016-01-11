@@ -20,7 +20,10 @@ for i in range(16):
 
 while True:
 	nextFrame = ledMatrix.CreateFrameCanvas()
-	heights = numpy.sin(barHeights)
+	heights = numpy.empty([16])
+	for i in range(len(barHeights)):
+		heights[i] = (math.sin(randint(-3, 3) * x) + math.cos(randint(-3, 3) * x) + math.cos(randint(-3, 3) * x)) / 3
+
 	barHeights += pi / 16
 	for x in range(width):
 		barHeight = int(heights[int(x / barWidth)] * height)
@@ -32,5 +35,6 @@ while True:
 					nextFrame.SetPixel(x, y, 200, 200, 0)
 				else:
 					nextFrame.SetPixel(x, y, 0, 200, 0)
+
 	ledMatrix.SwapOnVSync(nextFrame)
 	time.sleep(0.2)
