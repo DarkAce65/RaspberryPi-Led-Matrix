@@ -14,7 +14,7 @@ height = ledMatrix.height
 width = ledMatrix.width
 barWidth = width / 16
 pi = numpy.pi
-barHeights = numpy.array([])
+barHeights = numpy.empty([16])
 for i in range(16):
 	barHeights[i] = i * pi / 16
 
