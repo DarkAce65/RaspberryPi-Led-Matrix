@@ -24,11 +24,11 @@ while True:
 		barHeight = int(heights[int(x / barWidth)] * height)
 		for y in range(height):
 			if height - y <= barHeight:
-				if y > 14
+				if y > 14:
 					nextFrame.SetPixel(x, y, 255, 0, 0)
-				else if y > 10
+				elif y > 10:
 					nextFrame.SetPixel(x, y, 200, 200, 0)
-				else
+				else:
 					nextFrame.SetPixel(x, y, 0, 200, 0)
 	ledMatrix.SwapOnVSync(nextFrame)
 	time.sleep(0.2)
