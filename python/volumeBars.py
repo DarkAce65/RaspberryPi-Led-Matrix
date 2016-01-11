@@ -25,7 +25,6 @@ while True:
 		x = barHeights[i]
 		heights[i] = (math.sin(randint(-3, 3) * x) + math.cos(randint(-3, 3) * x) + math.cos(randint(-3, 3) * x)) / 3
 
-	barHeights += pi / 16
 	for x in range(width):
 		barHeight = int(heights[int(x / barWidth)] * height)
 		for y in range(height):
@@ -38,4 +37,4 @@ while True:
 					nextFrame.SetPixel(x, y, 0, 200, 0)
 
 	ledMatrix.SwapOnVSync(nextFrame)
-	time.sleep(0.2)
+	time.sleep(0.1)
