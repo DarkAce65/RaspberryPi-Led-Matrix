@@ -24,9 +24,9 @@ while True:
 		barHeight = int(heights[int(x / barWidth)] * height)
 		for y in range(height):
 			if height - y <= barHeight:
-				if y > 14:
+				if y < 2:
 					nextFrame.SetPixel(x, y, 255, 0, 0)
-				elif y > 10:
+				elif y < 6:
 					nextFrame.SetPixel(x, y, 200, 200, 0)
 				else:
 					nextFrame.SetPixel(x, y, 0, 200, 0)
