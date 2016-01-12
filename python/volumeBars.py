@@ -11,20 +11,23 @@ chains = 1
 parallel = 1
 ledMatrix = RGBMatrix(rows, chains, parallel)
 
+numRows = 16
 height = ledMatrix.height
 width = ledMatrix.width
-
-numRows = 16
 barWidth = width / numRows
 tempXAxis = numpy.empty([numRows])
 for i in range(numRows):
 	tempXAxis[i] = i * pi / numRows
 
-def drawFrame(barHeights): # Takes an array of heights with a range of 0 to 1
+while True:
 	nextFrame = ledMatrix.CreateFrameCanvas()
+	barHeights = numpy.empty([numRows])
+	for i in range(len(tempXAxis)):
+		x = tempXAxis[i]
+		barHeights[i] = (math.sin(randint(-3, 3) * x) + math.cos(randint(-3, 3) * x) + math.cos(randint(-3, 3) * x)) / 3
 
 	for x in range(width):
-		barHeight = int(heights[int(x / barWidth)] * height)
+		barHeight = int(barHeights[int(x / barWidth)] * height)
 		for y in range(height):
 			if height - y <= barHeight:
 				if y < 2:
@@ -34,13 +37,5 @@ def drawFrame(barHeights): # Takes an array of heights with a range of 0 to 1
 				else:
 					nextFrame.SetPixel(x, y, 0, 200, 0) # Green
 
-	return nextFrame
-
-while True:
-	randomHeights = numpy.empty([16])
-	for i in range(len(tempXAxis)):
-		x = tempXAxis[i]
-		randomHeights[i] = (math.sin(randint(-3, 3) * x) + math.cos(randint(-3, 3) * x) + math.cos(randint(-3, 3) * x)) / 3
-
-	ledMatrix.SwapOnVSync(drawFrame(randomHeights))
+	ledMatrix.SwapOnVSync(nextFrame)
 	time.sleep(0.1)
