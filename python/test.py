@@ -9,8 +9,14 @@ parallel = 1
 ledMatrix = RGBMatrix(rows, chains, parallel)
 height = ledMatrix.height
 width = ledMatrix.width
-for i in range(100):
-	ledMatrix.SetPixel(randint(0, width), randint(0, height), randint(0, 255), randint(0, 255), randint(0, 255))
-	time.sleep(0.05)
-time.sleep(5)
-ledMatrix.Clear()
+
+try:
+	print "Press Ctrl + C to stop executing"
+	for i in range(100):
+		ledMatrix.SetPixel(randint(0, width), randint(0, height), randint(0, 255), randint(0, 255), randint(0, 255))
+		time.sleep(0.05)
+	time.sleep(5)
+	ledMatrix.Clear()
+except KeyboardInterrupt:
+	print "Exiting\n"
+	sys.exit(0)
