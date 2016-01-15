@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from rgbmatrix import RGBMatrix
-from random import randint
 import sys, time
 
 rows = 16
