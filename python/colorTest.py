@@ -16,7 +16,7 @@ try:
 		for y in range(height):
 			b = int((int(x / 8) + int(y / 8) * 4) / 7.0 * 255)
 			ledMatrix.SetPixel(x, y, 0, 0, b)
-		time.sleep(0.01)
+			time.sleep(0.01)
 
 	for x in range(width):
 		for y in range(height):
