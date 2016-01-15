@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 from rgbmatrix import RGBMatrix
 from random import randint
-import numpy
-import math
-import time
+import sys, time
+import numpy, math
 
 pi = numpy.pi
 rows = 16
