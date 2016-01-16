@@ -22,3 +22,6 @@ class Ball:
 
 	def drawOnMatrix(self, ledMatrix):
 		ledMatrix.SetPixel(self.x, self.y, self.r, self.g, self.b)
+
+	def printValues(self):
+		print "x: ", self.x,  ", y: ", self.y, "\nvx: ", self.vx,  ", vy: ", self.vy, "\ngravity: ", Ball.gravity
