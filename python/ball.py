@@ -3,17 +3,17 @@ import sys, time
 import math
 
 class Ball:
-	gravity = -1 # Dots per second squared
+	gravity = -10 # Dots per second squared
 
-	def __init__(self, x=0, y=0):
+	def __init__(self, x=0, y=0, vx=0, vy=0):
 		self.r = 255
 		self.g = 0
 		self.b = 0
 
 		self.x = x
 		self.y = y
-		self.vx = 0
-		self.vy = 0
+		self.vx = vx
+		self.vy = vy
 
 	def updateValues(self, timeElapsed=1): # timeElapsed in seconds
 		self.x += self.vx * timeElapsed
