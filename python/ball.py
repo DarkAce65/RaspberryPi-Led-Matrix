@@ -5,10 +5,10 @@ import math
 class Ball:
 	gravity = -10 # Dots per second squared
 
-	def __init__(self, x=0, y=0, vx=0, vy=0):
-		self.r = 255
-		self.g = 0
-		self.b = 0
+	def __init__(self, x=0, y=0, vx=0, vy=0, r=255, g=0, b=0):
+		self.r = r
+		self.g = g
+		self.b = b
 
 		self.x = x
 		self.y = y
