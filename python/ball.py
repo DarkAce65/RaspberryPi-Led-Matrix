@@ -21,9 +21,9 @@ class Ball:
 		self.vy += Ball.gravity * timeElapsed
 
 	def bounceOnEdge():
-		if self.x < 0 or self.x > 16
+		if self.x < 0 or self.x > 16:
 			self.vx *= -1
-		if self.y < 0 or self.y > 16
+		if self.y < 0 or self.y > 16:
 			self.vy *= -1
 
 	def drawOnMatrix(self, ledMatrix):
