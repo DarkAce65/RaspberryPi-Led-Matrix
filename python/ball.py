@@ -24,4 +24,4 @@ class Ball:
 		ledMatrix.SetPixel(self.x, self.y, self.r, self.g, self.b)
 
 	def printValues(self):
-		print "x: ", self.x,  ", y: ", self.y, "\nvx: ", self.vx,  ", vy: ", self.vy, "\ngravity: ", Ball.gravity
+		print "x: %d, y: %d - vx: %d vy: %d" % (self.x, self.y, self.vx, self.vy)
