@@ -18,7 +18,7 @@ class Ball:
 	def updateValues(self):
 		self.x += self.vx
 		self.y += self.vy
-		self.vy += gravity
+		self.vy += Ball.gravity
 
 	def drawOnMatrix(self, ledMatrix):
 		ledMatrix.SetPixel(self.x, self.y, self.r, self.g, self.b)
