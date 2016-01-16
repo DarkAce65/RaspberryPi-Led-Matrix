@@ -36,8 +36,8 @@ class Ball:
 			self.vy = abs(self.vy) * -1
 			self.y = 15
 
-	def drawOnMatrix(self, ledMatrix):
-		ledMatrix.SetPixel(int(self.x), ledMatrix.height - int(self.y), self.r, self.g, self.b)
+	def drawOnMatrix(self, matrix):
+		matrix.SetPixel(int(self.x), matrix.height - int(self.y), self.r, self.g, self.b)
 
 	def printValues(self):
 		print "x: %.2f, y: %.2f - vx: %.2f vy: %.2f" % (self.x, self.y, self.vx, self.vy)
