@@ -37,7 +37,7 @@ class Ball:
 			self.y = 15
 
 	def drawOnMatrix(self, matrix):
-		matrix.SetPixel(int(self.x), matrix.height - int(self.y), self.r, self.g, self.b)
+		matrix.SetPixel(int(self.x), matrix.height - 1 - int(self.y), self.r, self.g, self.b)
 
 	def printValues(self):
 		print "x: %.2f, y: %.2f - vx: %.2f vy: %.2f" % (self.x, self.y, self.vx, self.vy)
