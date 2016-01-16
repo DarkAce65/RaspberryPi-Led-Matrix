@@ -17,10 +17,10 @@ try:
 	print "Press Ctrl + C to stop executing"
 	while True:
 		nextFrame = ledMatrix.CreateFrameCanvas()
-		ball.updateValues(1 / 60)
+		ball.updateValues(1 / 60.0)
 		ball.drawOnMatrix(nextFrame)
 		ledMatrix.SwapOnVSync(nextFrame)
-		time.sleep(1 / 60)
+		time.sleep(1 / 60.0)
 except KeyboardInterrupt:
 	print "Exiting\n"
 	sys.exit(0)
