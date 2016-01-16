@@ -15,10 +15,10 @@ class Ball:
 		self.vx = 0
 		self.vy = 0
 
-	def updateValues(self):
-		self.x += self.vx
-		self.y += self.vy + 0.5 * Ball.gravity
-		self.vy += Ball.gravity
+	def updateValues(self, timeElapsed=1):
+		self.x += self.vx * timeElapsed
+		self.y += self.vy * timeElapsed + 0.5 * Ball.gravity * timeElapsed ** 2
+		self.vy += Ball.gravity * timeElapsed
 
 	def drawOnMatrix(self, ledMatrix):
 		ledMatrix.SetPixel(self.x, self.y, self.r, self.g, self.b)
