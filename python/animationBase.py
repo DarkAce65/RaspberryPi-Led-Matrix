@@ -19,7 +19,7 @@ try:
 	while True:
 		nextFrame = ledMatrix.CreateFrameCanvas()
 		ball.updateValues(time.clock() - prevTime)
-		ball.drawOnMatrix()
+		ball.drawOnMatrix(ledMatrix)
 		prevTime = time.clock()
 		ledMatrix.SwapOnVSync(nextFrame)
 except KeyboardInterrupt:
