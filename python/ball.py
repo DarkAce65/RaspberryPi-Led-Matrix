@@ -15,7 +15,7 @@ class Ball:
 		self.vx = 0
 		self.vy = 0
 
-	def updateValues(self, timeElapsed=1):
+	def updateValues(self, timeElapsed=1): # timeElapsed in seconds
 		self.x += self.vx * timeElapsed
 		self.y += self.vy * timeElapsed + 0.5 * Ball.gravity * timeElapsed ** 2
 		self.vy += Ball.gravity * timeElapsed
