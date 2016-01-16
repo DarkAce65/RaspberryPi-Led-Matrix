@@ -11,7 +11,7 @@ ledMatrix = RGBMatrix(rows, chains, parallel)
 numRows = 16
 height = ledMatrix.height
 width = ledMatrix.width
-ball = Ball()
+ball = Ball(5, 9)
 
 try:
 	print "Press Ctrl + C to stop executing"

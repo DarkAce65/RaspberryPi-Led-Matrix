@@ -10,8 +10,8 @@ class Ball:
 		self.g = 0
 		self.b = 0
 
-		self.x = 0
-		self.y = 0
+		self.x = x
+		self.y = y
 		self.vx = 0
 		self.vy = 0
 
