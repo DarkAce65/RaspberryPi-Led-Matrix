@@ -11,14 +11,17 @@ ledMatrix = RGBMatrix(rows, chains, parallel)
 numRows = 16
 height = ledMatrix.height
 width = ledMatrix.width
-ball = Ball(5, 9, 4)
+red = Ball(5, 9, 4)
+blue = Ball(6, 9, 2, 2, 0, 0, 255)
 
 try:
 	print "Press Ctrl + C to stop executing"
 	while True:
 		nextFrame = ledMatrix.CreateFrameCanvas()
-		ball.updateValues(1 / 60.0)
-		ball.drawOnMatrix(nextFrame)
+		red.updateValues(1 / 60.0)
+		blue.updateValues(1 / 60.0)
+		red.drawOnMatrix(nextFrame)
+		blue.drawOnMatrix(nextFrame)
 		ledMatrix.SwapOnVSync(nextFrame)
 		time.sleep(1 / 60.0)
 except KeyboardInterrupt:
