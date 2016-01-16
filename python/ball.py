@@ -17,7 +17,7 @@ class Ball:
 
 	def updateValues(self):
 		self.x += self.vx
-		self.y += self.vy
+		self.y += self.vy + 0.5 * Ball.gravity
 		self.vy += Ball.gravity
 
 	def drawOnMatrix(self, ledMatrix):
