@@ -20,8 +20,14 @@ class Ball:
 		self.y += self.vy * timeElapsed + 0.5 * Ball.gravity * timeElapsed ** 2
 		self.vy += Ball.gravity * timeElapsed
 
+	def bounceOnEdge():
+		if self.x < 0 || self.x > 16
+			self.vx *= -1
+		if self.y < 0 || self.y > 16
+			self.vy *= -1
+
 	def drawOnMatrix(self, ledMatrix):
-		ledMatrix.SetPixel(self.x, self.y, self.r, self.g, self.b)
+		ledMatrix.SetPixel(int(self.x), int(self.y), self.r, self.g, self.b)
 
 	def printValues(self):
 		print "x: %.2f, y: %.2f - vx: %.2f vy: %.2f" % (self.x, self.y, self.vx, self.vy)
