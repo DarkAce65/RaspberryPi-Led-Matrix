@@ -3,7 +3,7 @@ import sys, time
 import math
 
 class Ball:
-	gravity = -3 # Dots per second squared
+	gravity = -1 # Dots per second squared
 
 	def __init__(self, x=0, y=0):
 		self.r = 255
