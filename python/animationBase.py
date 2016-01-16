@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from rgbmatrix import RGBMatrix
 import sys, time
-import math
 
 rows = 16
 chains = 1
