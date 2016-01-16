@@ -12,16 +12,15 @@ numRows = 16
 height = ledMatrix.height
 width = ledMatrix.width
 ball = Ball()
-prevTime = time.clock()
 
 try:
 	print "Press Ctrl + C to stop executing"
 	while True:
 		nextFrame = ledMatrix.CreateFrameCanvas()
-		ball.updateValues(time.clock() - prevTime)
-		ball.drawOnMatrix(ledMatrix)
-		prevTime = time.clock()
+		ball.updateValues()
+		ball.drawOnMatrix(nextFrame)
 		ledMatrix.SwapOnVSync(nextFrame)
+		time.sleep(1)
 except KeyboardInterrupt:
 	print "Exiting\n"
 	sys.exit(0)
