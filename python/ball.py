@@ -21,7 +21,7 @@ class Ball:
 		self.vy += Ball.gravity * timeElapsed
 		self.edgeHandling(timeElapsed)
 
-	def edgeHandling(self):
+	def edgeHandling(self, timeElapsed):
 		if int(self.y) == 0:
 			self.vx -= 0.1 * timeElapsed
 
