@@ -23,7 +23,7 @@ class Ball:
 
 	def edgeHandling(self, timeElapsed):
 		if int(self.y) == 0:
-			self.vx -= 0.1 * timeElapsed
+			self.vx -= timeElapsed
 
 		if self.x < 0:
 			self.vx = abs(self.vx)
