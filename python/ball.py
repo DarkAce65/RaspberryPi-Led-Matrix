@@ -19,9 +19,12 @@ class Ball:
 		self.x += self.vx * timeElapsed
 		self.y += self.vy * timeElapsed + 0.5 * Ball.gravity * timeElapsed ** 2
 		self.vy += Ball.gravity * timeElapsed
-		self.edgeHandling()
+		self.edgeHandling(timeElapsed)
 
 	def edgeHandling(self):
+		if int(self.y) == 0:
+			self.vx -= 0.1 * timeElapsed
+
 		if self.x < 0:
 			self.vx = abs(self.vx)
 			self.x = 0
@@ -30,10 +33,10 @@ class Ball:
 			self.x = 31
 
 		if self.y < 0:
-			self.vy = abs(self.vy) * 0.9 # Bounce decay
+			self.vy = abs(self.vy) * 0.95 # Bounce decay
 			self.y = 0
 		elif self.y > 15:
-			self.vy = abs(self.vy) * -0.9 # Bounce decay
+			self.vy = abs(self.vy) * -0.95 # Bounce decay
 			self.y = 15
 
 	def drawOnMatrix(self, matrix):
