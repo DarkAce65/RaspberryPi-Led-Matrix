@@ -19,9 +19,9 @@ class Ball:
 		self.x += self.vx * timeElapsed
 		self.y += self.vy * timeElapsed + 0.5 * Ball.gravity * timeElapsed ** 2
 		self.vy += Ball.gravity * timeElapsed
-		self.bounceOnEdge()
+		self.edgeHandling()
 
-	def bounceOnEdge(self):
+	def edgeHandling(self):
 		if self.x < 0:
 			self.vx = abs(self.vx)
 			self.x = 0
