@@ -30,10 +30,10 @@ class Ball:
 			self.x = 31
 
 		if self.y < 0:
-			self.vy = abs(self.vy)
+			self.vy = abs(self.vy) * 0.9 # Bounce decay
 			self.y = 0
 		elif self.y > 15:
-			self.vy = abs(self.vy) * -1
+			self.vy = abs(self.vy) * -0.9 # Bounce decay
 			self.y = 15
 
 	def drawOnMatrix(self, matrix):
