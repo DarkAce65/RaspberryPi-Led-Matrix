@@ -8,7 +8,6 @@ chains = 1
 parallel = 1
 ledMatrix = RGBMatrix(rows, chains, parallel)
 
-numRows = 16
 height = ledMatrix.height
 width = ledMatrix.width
 red = Ball(5, 9, 7)
