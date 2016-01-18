@@ -14,10 +14,13 @@ off = 1
 
 try:
 	print "Press Ctrl + C to stop executing"
+	nextFrame = ledMatrix.CreateFrameCanvas()
 	while True:
-		ledMatrix.Fill(255, 255, 255)
+		nextFrame.Fill(255, 255, 255)
+		nextFrame = ledMatrix.SwapOnVSync(nextFrame)
 		time.sleep(on)
-		ledMatrix.Clear()
+		nextFrame.Clear()
+		nextFrame = ledMatrix.SwapOnVSync(nextFrame)
 		time.sleep(off)
 except KeyboardInterrupt:
 	print "Exiting\n"
