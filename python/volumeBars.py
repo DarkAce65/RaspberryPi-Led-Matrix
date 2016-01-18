@@ -10,19 +10,19 @@ chains = 1
 parallel = 1
 ledMatrix = RGBMatrix(rows, chains, parallel)
 
-numRows = 16
+numBars = 16
 height = ledMatrix.height
 width = ledMatrix.width
-barWidth = width / numRows
-tempXAxis = numpy.empty([numRows])
-for i in range(numRows):
-	tempXAxis[i] = i * pi / numRows
+barWidth = width / numBars
+tempXAxis = numpy.empty([numBars])
+for i in range(numBars):
+	tempXAxis[i] = i * pi / numBars
 
 try:
 	print "Press Ctrl + C to stop executing"
 	while True:
 		nextFrame = ledMatrix.CreateFrameCanvas()
-		barHeights = numpy.empty([numRows])
+		barHeights = numpy.empty([numBars])
 		for i in range(len(tempXAxis)):
 			x = tempXAxis[i]
 			barHeights[i] = (math.sin(randint(-3, 3) * x) + math.cos(randint(-3, 3) * x) + math.cos(randint(-3, 3) * x)) / 3
