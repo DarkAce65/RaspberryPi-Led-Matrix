@@ -45,7 +45,7 @@ public:
 		}
 	}
 	void drawOnCanvas(Canvas *canvas) {
-		canvas->SetPixel((int) x, canvas->height() - 1 - (int) y, r, g, b);
+		canvas->SetPixel((int) x, canvas->height() - 1 - (int) y, 0, (int) (x * 255 / 32), (int) (y * 255 / 16));
 	}
 	void printValues() {
 		std::cout << "x: " << x << " y: " << y << " vx: " << vx << " vy: " << vy << std::endl;
@@ -55,12 +55,18 @@ public:
 static void DrawOnCanvas(Canvas *canvas) {
 	Ball *red = new Ball(2, 12, 4, -4, 255, 0, 0);
 	Ball *blue = new Ball(6, 9, 15, 12, 0, 0, 255);
+	Ball *b1 = new Ball(3, 2, -5, 3, 0, 0, 255);
+	Ball *b2 = new Ball(4, 29, 2, 5, 0, 0, 255);
 	int c = 0;
 	while(c < 60000) {
 		red->updateValues(1 / 60.0);
 		blue->updateValues(1 / 60.0);
+		b1->updateValues(1 / 60.0);
+		b2->updateValues(1 / 60.0);
 		red->drawOnCanvas(canvas);
 		blue->drawOnCanvas(canvas);
+		b1->drawOnCanvas(canvas);
+		b2->drawOnCanvas(canvas);
 		c++;
 		usleep(1000000 / 60.0);
 		canvas->Clear();
