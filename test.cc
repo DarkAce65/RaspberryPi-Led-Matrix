@@ -1,86 +1,45 @@
 #include "led-matrix.h"
 
-#include <iostream>
 #include <unistd.h>
 #include <math.h>
 #include <stdio.h>
+#include <signal.h>
 
 using rgb_matrix::GPIO;
 using rgb_matrix::RGBMatrix;
 using rgb_matrix::Canvas;
 
-class Ball {
-	int r, g, b;
-	float x, y, vx, vy;
-public:
-	static const int GRAVITY = -20;
-	Ball(float x, float y, float vx, float vy, int r, int g, int b): x(x), y(y), vx(vx), vy(vy), r(r), g(g), b(b) {}
-	void updateValues(float timeElapsed) {
-		x += vx * timeElapsed;
-		y += vy * timeElapsed + 0.5 * Ball::GRAVITY * pow(timeElapsed, 2);
-		vy += Ball::GRAVITY * timeElapsed;
-		edgeHandling(timeElapsed);
-	}
-	void edgeHandling(float timeElapsed) {
-		if((int) y == 0) {
-			vx -= copysign(1, vx) * timeElapsed;
-		}
+volatile bool interrupt_received = false;
+static void interrupt_handler(int signo) {
+	interrupt_received = true;
+}
 
-		if(x < 0) {
-			vx = abs(vx);
-			x = 0;
-		}
-		else if(x > 31) {
-			vx = abs(vx) * -1;
-			x = 31;
-		}
+static void draw_on_canvas(Canvas *canvas) {
+	canvas->Fill(0, 0, 20);
 
-		if(y < 0) {
-			vy = abs(vy) * 0.95; // Bounce decay
-			y = 0;
-		}
-		else if(y > 15) {
-			vy = abs(vy) * -0.95; // Bounce decay
-			y = 15;
-		}
-	}
-	void drawOnCanvas(Canvas *canvas) {
-		canvas->SetPixel((int) x, canvas->height() - 1 - (int) y, 0, (int) (x * 255 / 32), (int) (y * 255 / 16));
-	}
-	void printValues() {
-		std::cout << "x: " << x << " y: " << y << " vx: " << vx << " vy: " << vy << std::endl;
-	}
-};
-
-static void DrawOnCanvas(Canvas *canvas) {
-	Ball *red = new Ball(2, 12, 4, -4, 255, 0, 0);
-	Ball *blue = new Ball(6, 9, 15, 12, 0, 0, 255);
-	Ball *b1 = new Ball(3, 2, -5, 3, 0, 0, 255);
-	Ball *b2 = new Ball(4, 29, 2, 5, 0, 0, 255);
-	int c = 0;
-	while(c < 60000) {
-		red->updateValues(1 / 60.0);
-		blue->updateValues(1 / 60.0);
-		b1->updateValues(1 / 60.0);
-		b2->updateValues(1 / 60.0);
-		red->drawOnCanvas(canvas);
-		blue->drawOnCanvas(canvas);
-		b1->drawOnCanvas(canvas);
-		b2->drawOnCanvas(canvas);
-		c++;
-		usleep(1000000 / 60.0);
-		canvas->Clear();
-	}
+	int center_x = canvas->width() / 2;
+	int center_y = canvas->height() / 2;
+	canvas->SetPixel(center_x, center_y, 255, 0, 0);
+	usleep(1000 * 1000);
 }
 
 int main(int argc, char *argv[]) {
-	GPIO io;
-	if(!io.Init()) {
+	RGBMatrix::Options defaults;
+	defaults.hardware_mapping = "regular";
+	defaults.rows = 16;
+	defaults.chain_length = 1;
+	defaults.parallel = 1;
+	defaults.show_refresh_rate = true;
+
+	Canvas *canvas = rgb_matrix::CreateMatrixFromFlags(&argc, &argv, &defaults);
+	if(canvas == NULL) {
 		return 1;
 	}
 
-	Canvas *canvas = new RGBMatrix(&io, 16, 1, 1);
-	DrawOnCanvas(canvas);
+	signal(SIGTERM, interrupt_handler);
+	signal(SIGINT, interrupt_handler);
+
+	draw_on_canvas(canvas);
 
 	canvas->Clear();
 	delete canvas;
